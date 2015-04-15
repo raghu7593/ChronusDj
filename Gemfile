@@ -17,6 +17,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'bourbon'
 gem 'font-awesome-rails'
 gem 'modernizr-rails'
+gem 'nokogiri', :git => "git://github.com/hasan-chronus/nokogiri.git", :branch => "seg_fault_fix"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
