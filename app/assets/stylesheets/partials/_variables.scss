@@ -1,0 +1,26 @@
+// colors
+$main-text: #4e6361; // main text
+$link: #6cac70; // anchor tags
+$background: #f5f4e9; // body background color
+$color-dark-green: #4e6361; // green dark
+$color-darker-green: darken($color-dark-green, 20%); // green darker
+$color-light-green: lighten($color-dark-green, 50%); // green light
+$color-white: #ffffff; // White
+$color-red: #e94b35; // Cinnabar
+
+// fonts 
+$primary-font: 'Titillium Web', sans-serif;
+
+// z-index 
+
+$secondary-nav: 1;
+$content-zindex: 2;
+$header-zindex: 3;
+$modal-zindex: 4;
+
+// header height 
+
+$header-S: 50px;
+$header-M: 70px;
+$header-height-S: 50px;
+$header-height-M: 80px;

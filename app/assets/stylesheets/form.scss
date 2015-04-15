@@ -1,0 +1,284 @@
+/* -------------------------------- 
+
+Form
+
+-------------------------------- */
+
+.cd-form {
+  width: 90%;
+  max-width: $M; // breakpoints inside partials > _layout.scss
+  margin: auto;
+  @include clearfix;
+
+  fieldset {
+    padding-bottom: 28px;
+  }
+
+  div {
+    /* form element wrapper */
+    position: relative;
+    margin: 20px 0;
+  }
+
+  h4, .cd-label {
+    font-size: 1.2rem;
+    color: darken($color-light-green, 30%);
+    margin-bottom: 10px;
+  }
+
+  .cd-label {
+    display: block;
+  }
+
+  input, textarea, select, label {
+    font-family: $primary-font;
+  }
+
+  input[type="text"], 
+  input[type="email"], 
+  textarea, 
+  select {
+    display: block;
+    width: 100%;
+    @include appearance(none);
+  }
+
+  input[type="text"], 
+  input[type="email"], 
+  textarea, 
+  select {
+    /* general style for input elements */
+    padding: 12px;
+    border: 1px solid darken($color-light-green, 10%);
+    border-radius: .25em;
+    box-shadow: inset 0 1px 1px rgba(#000, .08);
+
+    &:focus {
+      outline: none;
+      border-color: $color-dark-green;
+      box-shadow: 0 0 5px rgba($color-dark-green, .2);
+    }
+  }
+
+  .cd-select {
+    /* select element wapper */
+    position: relative;
+
+    &::after {
+      /* arrow icon for select element */
+      content: '';
+      position: absolute;
+      z-index: 1;
+      right: 16px;
+      top: 50%;
+      margin-top: -8px;
+
+      display: block;
+      width: 16px;
+      height: 16px;
+
+      background: asset_url('cd-icon-arrow.svg') no-repeat center center;
+      pointer-events: none;
+    }
+  }
+
+  select {
+    box-shadow: 0 1px 3px rgba(#000, .08);
+    cursor: pointer;
+  }
+
+  select::-ms-expand {
+    display: none;
+  }
+
+  .cd-form-list {
+    margin-top: 16px;
+    text-align: center;
+    @include clearfix;
+  }
+
+  .cd-form-list li {
+    /* wrapper for radio and checkbox input types */
+    display: inline-block;
+    position: relative;
+    @include user-select(none);
+    margin: 0 26px 16px 0;
+  }
+
+  input[type=radio],
+  input[type=checkbox] {
+    /* hide original check and radio buttons */
+    position: absolute;
+    left: 0;
+    top: 50%;
+    @include transform(translateY(-50%));
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    z-index: 2;
+  }
+
+  input[type="radio"] + label, 
+  input[type="checkbox"] + label {
+    padding-left: 24px;
+  }
+
+  input[type="radio"] + label::before,
+  input[type="radio"] + label::after,
+  input[type="checkbox"] + label::before,
+  input[type="checkbox"] + label::after {
+    /* custom radio and check boxes */
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -8px;
+    width: 16px;
+    height: 16px;
+  }
+
+  input[type="radio"] + label::before,
+  input[type="checkbox"] + label::before {
+    border: 1px solid darken($color-light-green, 10%);
+    box-shadow: inset 0 1px 1px rgba(#000, .08);
+  }
+
+  input[type="radio"] + label::before,
+  input[type="radio"] + label::after {
+    border-radius: 50%;
+  }
+
+  input[type="checkbox"] + label::before,
+  input[type="checkbox"] + label::after {
+    border-radius: .25em;
+  }
+
+  input[type="radio"] + label::after,
+  input[type="checkbox"] + label::after {
+    background-color: $color-dark-green;
+    background-position: center center;
+    background-repeat: no-repeat;
+    box-shadow: 0 0 5px rgba($color-dark-green, .4);
+    display: none;
+  }
+
+  input[type="radio"] + label::after {
+    /* custom image for radio button */
+    background-image: asset_url('cd-icon-radio.svg');
+  }
+
+  input[type="checkbox"] + label::after {
+    /* custom image for checkbox */
+    background-image: asset_url('cd-icon-check.svg');
+  }
+
+  input[type="radio"]:focus + label::before,
+  input[type="checkbox"]:focus + label::before {
+    /* add focus effect for radio and check buttons */
+    box-shadow: 0 0 5px rgba($color-dark-green, .6);
+  }
+
+  input[type="radio"]:checked + label::after,
+  input[type="checkbox"]:checked + label::after {
+    display: block;
+  }
+
+  input[type="radio"]:checked + label::before,
+  input[type="radio"]:checked + label::after,
+  input[type="checkbox"]:checked + label::before,
+  input[type="checkbox"]:checked + label::after {
+    @include animation(cd-bounce .3s);
+  }
+
+  textarea {
+    min-height: 120px;
+    resize: vertical;
+    overflow: auto;
+  }
+
+  input[type="submit"] {
+    /* button style */
+    width: 100%;
+    border: none;
+    background: $color-dark-green;
+    border-radius: .25em;
+    padding: 16px 20px;
+    color: $color-white;
+    font-weight: bold;
+    cursor: pointer;
+    @include font-smoothing;
+    @include appearance(none);
+
+    .no-touch &:hover {
+      background: lighten($color-dark-green, 5%);
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:active {
+      @include transform(scale(.9));
+    }
+  }
+
+  [required] {
+    background: asset_url('cd-required.svg') no-repeat top right;
+  }
+
+  .error {
+    border-color: $color-red !important;
+  }
+
+  @include MQ(M) {
+    div {
+      /* form element wrapper */
+      margin: 32px 0;
+    }
+
+    h4, .cd-label {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+@include keyframes(cd-bounce) {
+  0%, 100% {
+    @include transform(scale(1));
+  }
+
+  50% {
+    @include transform(scale(.8));
+  }
+}
+
+/* -------------------------------- 
+
+FLoating labels 
+
+-------------------------------- */
+
+.js .floating-labels {
+  div {
+    margin: 28px 0;
+  }
+
+  .cd-label {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    cursor: text;
+    @include transition(top .2s, left .2s, font-size .2s);
+  }
+
+  .cd-label.float {
+    /* move label out the input field */
+    font-size: 1rem;
+    top: -20px;
+    left: 0 !important;
+  }
+
+  @include MQ(M) {
+  }
+}
