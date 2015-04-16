@@ -14,7 +14,11 @@ class DelayedJobsController < ApplicationController
     response = http.request(request)
     dj_responses = Nokogiri::HTML.parse(response.body).xpath("//li[@class='job']")
     dj_responses.each do |dj_response|
+      keys = dj_response.xpath(".//dt")
+      values = dj_response.xpath(".//dd")
+      keys.zip(values).each do |key, value|
 
+      end
     end
   end
 end
