@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150415153336) do
+ActiveRecord::Schema.define(version: 20150416134404) do
+
+  create_table "delayed_job_sites", force: :cascade do |t|
+    t.string   "environment",     limit: 255
+    t.string   "url",             limit: 255
+    t.boolean  "active",          limit: 1
+    t.string   "user_name",       limit: 255
+    t.string   "password",        limit: 255
+    t.string   "last_pass_match", limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "dj_id",            limit: 4

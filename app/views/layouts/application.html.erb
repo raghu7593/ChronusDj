@@ -23,6 +23,7 @@
       <a id="cd-menu-trigger" href="#0"><span class="cd-menu-text">Menu</span><span class="cd-menu-icon"></span></a>
     </header>
     <main class="cd-main-content">
+      <%= yield %>
     </main>
 
     <nav id="cd-lateral-nav">
@@ -59,11 +60,7 @@
       </ul> <!-- cd-navigation -->
 
       <ul class="cd-navigation cd-single-item-wrapper">
-        <li><a class="current" href="#0">Journal</a></li>
-        <li><a href="#0">FAQ</a></li>
-        <li><a href="#0">Terms &amp; Conditions</a></li>
-        <li><a href="#0">Careers</a></li>
-        <li><a href="#0">Students</a></li>
+        <%= link_to "Add New DJ Site", new_delayed_job_site_path, :remote => true, :class => "cd-modal-call" %>
       </ul> <!-- cd-single-item-wrapper -->
 
       <ul class="cd-navigation cd-single-item-wrapper">
