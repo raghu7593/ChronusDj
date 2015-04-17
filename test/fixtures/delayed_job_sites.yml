@@ -6,7 +6,7 @@ one:
   active: false
   user_name: MyString
   password: MyString
-  last_pass_match: MyString
+  lastpass_match: MyString
 
 two:
   environment: MyString
@@ -14,4 +14,4 @@ two:
   active: false
   user_name: MyString
   password: MyString
-  last_pass_match: MyString
+  lastpass_match: MyString

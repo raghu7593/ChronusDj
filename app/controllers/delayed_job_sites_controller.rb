@@ -30,6 +30,10 @@ class DelayedJobSitesController < ApplicationController
     @delayed_job_sites = DelayedJobSite.all
   end
 
+  def pull_delayed_jobs
+    DelayedJobSite.sync_all_active_sites
+  end
+
   private
   def delayed_job_site_params
     params.require(:delayed_job_site).permit(:environment, :url, :user_name, :password, :active)

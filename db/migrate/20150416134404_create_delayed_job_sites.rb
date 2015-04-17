@@ -6,7 +6,7 @@ class CreateDelayedJobSites < ActiveRecord::Migration
       t.boolean :active
       t.string :user_name
       t.string :password
-      t.string :last_pass_match
+      t.string :lastpass_match
 
       t.timestamps null: false
     end
