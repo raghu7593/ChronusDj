@@ -82,14 +82,19 @@ header {
 #cd-logo {
   display: block;
   float: left;
-  margin: 12px 0 0 20px;
+  margin: 6px 0 0 6px;
 
   img {
     display: block;
+    height: 40px;
+
+    @include MQ(M) {
+      height: 50px;
+    }
   }
 
   @include MQ(M) {
-    margin: 22px 0 0 30px;
+    margin: 10px 0 0 30px;
   }
 }
 

@@ -1,9 +1,22 @@
 <h3 class="page-header">
   Delayed Job Sites
 </h3>
-<div class="dj-site-item">
-  
-</div>
-<div class="dj-site-item">
-  
-</div>
+<ul id="cd-gallery-items" class="cd-container">
+  <% @delayed_job_sites.each do |delayed_job_site| %>
+    <li>
+      <div class="ribbon-wrapper">
+        <div class="ribbon-green"><%= delayed_job_site.active? ? "Active" : "Inactive" %></div>
+      </div>
+      <div class="cd-item-info">
+        <b><%= delayed_job_site.environment %></b>
+      </div>
+      <ul class="cd-item-wrapper">
+        <li class="cd-item-front">
+          <div class="cd-item-data">
+            <b>Url: </b><%= delayed_job_site.url %>
+          </div>
+        </li>
+      </ul>
+    </li>
+  <% end %>
+</ul>

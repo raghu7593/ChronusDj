@@ -13,8 +13,11 @@ class CreateDelayedJobs < ActiveRecord::Migration
       t.string :dj_locked_by
       t.timestamp :dj_failed_at
       t.timestamp :dj_created_at
+      t.boolean :resolved, :default => false
 
       t.timestamps
     end
+
+    add_index :delayed_jobs, :dj_id, :unique => true
   end
 end
