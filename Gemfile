@@ -20,6 +20,7 @@ gem 'modernizr-rails'
 gem 'nokogiri', :git => "git://github.com/hasan-chronus/nokogiri.git", :branch => "seg_fault_fix"
 gem 'lastpass'
 gem 'omniauth-google-oauth2'
+gem 'activerecord-session_store'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
