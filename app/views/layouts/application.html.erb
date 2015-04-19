@@ -15,12 +15,14 @@
         <ul>
           <li>
             <% if current_user %>
-              <a class="brand nav-pull-right nav-pull-bottom" href="#"><%= current_user.name.split.map(&:capitalize).join(' ') %></a>
-              <%= link_to "Logout", logout_path %>
+              <a href="#"><%= current_user.name.split.map(&:capitalize).join(' ') + (logged_in_super_user? ? " (SuperUser)" : "") %></a>
             <% else %>
               <%= link_to "/auth/google_oauth2"  do %>
-                <%= fa_icon "google" %>&nbsp;Login
+                <%= fa_icon "google" %>&nbsp;Login<%= " (SuperUser)" if logged_in_super_user? %>
               <% end %>
+            <% end %>
+            <% if current_user || logged_in_super_user? %>
+              <%= link_to "Logout", logout_path %>
             <% end %>
           </li>
         </ul>
@@ -65,9 +67,8 @@
       </ul> <!-- cd-navigation -->
 
       <ul class="cd-navigation cd-single-item-wrapper">
-        <% if current_user %>
-          <%= link_to "Add New DJ Site", new_delayed_job_site_path, :remote => true, :class => "cd-modal-call" %>
-        <% else %>
+        <%= link_to "Add New DJ Site", new_delayed_job_site_path, :remote => true, :class => "cd-modal-call" if logged_in_super_user? %>
+        <% unless current_user %>
           <%= link_to "Login with Google", "/auth/google_oauth2" %>
         <% end %>
       </ul> <!-- cd-single-item-wrapper -->

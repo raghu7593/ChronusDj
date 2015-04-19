@@ -1,0 +1,13 @@
+<h3 class="page-header">
+  SuperUser Login
+</h3>
+<%= form_tag '/sl', :method => :post, :class => "cd-form floating-labels" do %>
+  <fieldset>
+    <div>
+      <%= label_tag "super_user", "SuperUser Passphrase", :class => "cd-label" %>
+      <%= password_field_tag "super_user" %>
+    </div>
+    <%= submit_tag "Login as SuperUser" %>
+  </fieldset>
+<% end %>
+<%= javascript_tag "HtmlForm.floatLabels();" %>
