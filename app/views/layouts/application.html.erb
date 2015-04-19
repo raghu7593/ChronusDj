@@ -14,8 +14,13 @@
       <nav id="cd-top-nav">
         <ul>
           <li>
-            <%= link_to "/auth/google_oauth2"  do %>
-              <%= fa_icon "google" %>&nbsp;Login
+            <% if current_user %>
+              <a class="brand nav-pull-right nav-pull-bottom" href="#"><%= current_user.name.split.map(&:capitalize).join(' ') %></a>
+              <%= link_to "Logout", logout_path %>
+            <% else %>
+              <%= link_to "/auth/google_oauth2"  do %>
+                <%= fa_icon "google" %>&nbsp;Login
+              <% end %>
             <% end %>
           </li>
         </ul>
@@ -60,30 +65,26 @@
       </ul> <!-- cd-navigation -->
 
       <ul class="cd-navigation cd-single-item-wrapper">
-        <%= link_to "Add New DJ Site", new_delayed_job_site_path, :remote => true, :class => "cd-modal-call" %>
-      </ul> <!-- cd-single-item-wrapper -->
-
-      <ul class="cd-navigation cd-single-item-wrapper">
-        <li><a class="current" href="#0">Journal</a></li>
-        <li><a href="#0">FAQ</a></li>
-        <li><a href="#0">Terms &amp; Conditions</a></li>
-        <li><a href="#0">Careers</a></li>
-        <li><a href="#0">Students</a></li>
+        <% if current_user %>
+          <%= link_to "Add New DJ Site", new_delayed_job_site_path, :remote => true, :class => "cd-modal-call" %>
+        <% else %>
+          <%= link_to "Login with Google", "/auth/google_oauth2" %>
+        <% end %>
       </ul> <!-- cd-single-item-wrapper -->
 
       <div class="cd-navigation socials">
-        <a class="cd-twitter cd-img-replace" href="#0">Twitter</a>
-        <a class="cd-github cd-img-replace" href="#0">Git Hub</a>
-        <a class="cd-facebook cd-img-replace" href="#0">Facebook</a>
-        <a class="cd-google cd-img-replace" href="#0">Google Plus</a>
+        <a class="cd-twitter cd-img-replace" href="https://twitter.com/Chronus_Inc">Twitter</a>
+        <a class="cd-github cd-img-replace" href="https://github.com/ChronusCorp">Git Hub</a>
+        <a class="cd-facebook cd-img-replace" href="https://www.facebook.com/pages/Chronus-Corporation/250982824916923">Facebook</a>
+        <a class="cd-google cd-img-replace" href="https://plus.google.com/+Chronus">Google Plus</a>
       </div> <!-- socials -->
     </nav>
 
 
     <div class="cd-modal">
       <div class="cd-modal-container">
-        <span class="cd-modal-header">Raghu</span>
-        <div class="cd-modal-data">Teja</div>
+        <span class="cd-modal-header"></span>
+        <div class="cd-modal-data"></div>
       </div>
     </div>
   </body>

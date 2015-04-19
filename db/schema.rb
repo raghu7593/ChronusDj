@@ -11,17 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150416134404) do
+ActiveRecord::Schema.define(version: 20150419105319) do
 
   create_table "delayed_job_sites", force: :cascade do |t|
-    t.string   "environment",     limit: 255
-    t.string   "url",             limit: 255
-    t.boolean  "active",          limit: 1
-    t.string   "user_name",       limit: 255
-    t.string   "password",        limit: 255
-    t.string   "last_pass_match", limit: 255
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.string   "environment",    limit: 255
+    t.string   "url",            limit: 255
+    t.boolean  "active",         limit: 1
+    t.string   "user_name",      limit: 255
+    t.string   "password",       limit: 255
+    t.string   "lastpass_match", limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
@@ -39,6 +39,15 @@ ActiveRecord::Schema.define(version: 20150416134404) do
     t.datetime "dj_created_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.string   "provider",    limit: 255
+    t.string   "uid",         limit: 255
+    t.string   "name",        limit: 255
+    t.string   "profile_pic", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
 end
