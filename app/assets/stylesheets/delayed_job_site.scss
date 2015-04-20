@@ -98,6 +98,15 @@
 
 .cd-item-data {
   padding: 10px 10px 10px 10px;
+  table {
+    width: 100%;
+    tr {
+      width: 40%;
+      td {
+        height: 30px;
+      }
+    }
+  }
   b {
     font-weight: bold;
   }

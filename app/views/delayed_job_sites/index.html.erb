@@ -13,7 +13,24 @@
       <ul class="cd-item-wrapper">
         <li class="cd-item-front">
           <div class="cd-item-data">
-            <b>Url: </b><%= delayed_job_site.url %>
+            <table>
+              <tr>
+                <td><b>Url: </b></td>
+                <td><%= auto_link delayed_job_site.url %></td>
+              </tr>
+              <tr>
+                <td><b>Unresolved: </b></td>
+                <td>500</td>
+              </tr>
+              <tr>
+                <td><b>Valid: </b></td>
+                <td>600</td>
+              </tr>
+              <tr>
+                <td><b>Total: </b></td>
+                <td>1900</td>
+              </tr>
+            </table>
           </div>
         </li>
       </ul>
