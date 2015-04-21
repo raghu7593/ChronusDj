@@ -34,8 +34,9 @@ Form
     font-family: $primary-font;
   }
 
-  input[type="text"], 
-  input[type="email"], 
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
   textarea, 
   select {
     display: block;
@@ -43,8 +44,9 @@ Form
     @include appearance(none);
   }
 
-  input[type="text"], 
-  input[type="email"], 
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
   textarea, 
   select {
     /* general style for input elements */

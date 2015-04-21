@@ -1,0 +1,2 @@
+- [ ] Setup a cron which will send email if delayed jobs in queue exceeds maximum limit
+- [ ] Rake task to cleanup the site data every quarter

@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
-  get "static_pages/credits"
-  get "delayed_job_sites/pull_delayed_jobs"
+  root to: "sessions#new"
+  get "/auth/google_oauth2/callback", to: "sessions#create"
+  get "/auth/failure", to: "sessions#failure"
+  get "/logout", to: "sessions#destroy", :as => "logout"
+  get "/sl", to: "sessions#new_super_user"
+  post "/sl", to: "sessions#create_super_user"
   resources :delayed_jobs
-  resources :delayed_job_sites
-  root to: "static_pages#credits"
+  resources :delayed_job_sites do
+    collection do
+      get :pull_delayed_jobs
+    end
+  end
 end
