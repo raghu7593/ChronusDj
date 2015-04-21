@@ -25,19 +25,21 @@ ActiveRecord::Schema.define(version: 20150419121910) do
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
-    t.integer  "dj_id",            limit: 4
-    t.string   "dj_function_name", limit: 255
-    t.integer  "dj_priority",      limit: 4
-    t.integer  "dj_attempts",      limit: 4
-    t.text     "dj_handler",       limit: 65535
-    t.string   "dj_last_error",    limit: 255
-    t.text     "dj_backtrace",     limit: 65535
+    t.integer  "delayed_job_site_id", limit: 4
+    t.integer  "dj_id",               limit: 4
+    t.string   "dj_function_name",    limit: 255
+    t.integer  "dj_priority",         limit: 4
+    t.integer  "dj_attempts",         limit: 4
+    t.text     "dj_handler",          limit: 65535
+    t.string   "dj_last_error",       limit: 255
+    t.text     "dj_backtrace",        limit: 65535
     t.datetime "dj_run_at"
     t.datetime "dj_locked_at"
-    t.string   "dj_locked_by",     limit: 255
+    t.string   "dj_locked_by",        limit: 255
     t.datetime "dj_failed_at"
     t.datetime "dj_created_at"
-    t.boolean  "resolved",         limit: 1,     default: false
+    t.boolean  "dj_resolved",         limit: 1,     default: false
+    t.boolean  "dj_valid",            limit: 1
     t.datetime "created_at"
     t.datetime "updated_at"
   end

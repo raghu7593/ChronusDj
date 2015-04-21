@@ -2,6 +2,8 @@ class DelayedJobSite < ActiveRecord::Base
   require 'net/http'
   require 'lastpass.rb'
 
+  has_many :delayed_jobs
+
   DEFAULT_USER_NAME = "chronusmentor"
 
   def self.sync_all_active_sites

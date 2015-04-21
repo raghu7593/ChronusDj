@@ -1,6 +1,7 @@
 class CreateDelayedJobs < ActiveRecord::Migration
   def change
     create_table :delayed_jobs do |t|
+      t.integer :delayed_job_site_id
       t.integer :dj_id
       t.string :dj_function_name
       t.integer :dj_priority
@@ -13,7 +14,8 @@ class CreateDelayedJobs < ActiveRecord::Migration
       t.string :dj_locked_by
       t.timestamp :dj_failed_at
       t.timestamp :dj_created_at
-      t.boolean :resolved, :default => false
+      t.boolean :dj_resolved, :default => false
+      t.boolean :dj_valid
 
       t.timestamps
     end
