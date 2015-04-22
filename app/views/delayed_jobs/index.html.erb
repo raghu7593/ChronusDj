@@ -1,3 +1,15 @@
-<% @delayed_jobs.each do |delayed_job| %>
-  <%= delayed_job.dj_id %><br>
-<% end %>
+<div class="cd-side-bar">
+  <ul>
+    <% @delayed_jobs.each do |delayed_job| %>
+      <li>
+        <div class="sidebar-delayed-job">
+          <div class="environment"><%= delayed_job.delayed_job_site.environment %></div>
+          <div class="side-bar-error"><%= delayed_job.dj_last_error %></div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
+<div class="cd-delayed-job-info">
+  
+</div>

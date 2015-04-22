@@ -44,7 +44,7 @@ class DelayedJobSite < ActiveRecord::Base
     dj_responses.each do |dj_response|
       keys = dj_response.xpath(".//dt")
       values = dj_response.xpath(".//dd")
-      dj_object = DelayedJob.new
+      dj_object = self.delayed_jobs.build
       keys.zip(values).each do |key, value|
         save_data(key, value, dj_object)
       end

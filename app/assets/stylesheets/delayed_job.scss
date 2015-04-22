@@ -1,0 +1,17 @@
+.cd-side-bar {
+  width: 25%;
+  border: 1px solid #ccc;
+  height: 100%;
+  position: absolute;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.cd-delayed-job-info { 
+  margin-left:25%;
+}
+
+.sidebar-delayed-job {
+  height: 75px;
+  border-bottom: 1px solid #ccc;
+}
