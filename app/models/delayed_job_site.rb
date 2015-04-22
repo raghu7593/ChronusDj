@@ -27,20 +27,19 @@ class DelayedJobSite < ActiveRecord::Base
       lastpass_account = vault.accounts.detect{|account| account.name.match(self.lastpass_match)}
       if lastpass_account
         return {
-          :username => lastpass_account.username.presence || DEFAULT_USER_NAME,
+          :username => lastpass_account.user_name.presence || DEFAULT_USER_NAME,
           :password => lastpass_account.password
         }
       end
     else
       return {
-        :username => self.username.presence || DEFAULT_USER_NAME,
+        :username => self.user_name.presence || DEFAULT_USER_NAME,
         :password => self.password
       }
     end
   end
 
   def collect_delayed_jobs_recursively(nokogiri_response, credentials)
-    return if nokogiri_response.xpath(".//a[@class='more']").empty?
     dj_responses = nokogiri_response.xpath("//li[@class='job']")
     dj_responses.each do |dj_response|
       keys = dj_response.xpath(".//dt")
@@ -51,6 +50,7 @@ class DelayedJobSite < ActiveRecord::Base
       end
       dj_object.save!
     end
+    return if nokogiri_response.xpath(".//a[@class='more']").empty?
     next_url = nokogiri_response.xpath(".//a[@class='more']/@href").text
     next_uri = URI::join(self.url, next_url)
     nokogiri_response = get_response(next_uri, credentials)

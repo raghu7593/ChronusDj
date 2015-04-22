@@ -15,7 +15,6 @@ class DelayedJobSitesController < ApplicationController
   end
 
   def create
-    debugger
     @delayed_job_site = DelayedJobSite.create!(delayed_job_site_params)
     redirect_to delayed_job_sites_path and return
   end
@@ -32,6 +31,7 @@ class DelayedJobSitesController < ApplicationController
 
   def pull_delayed_jobs
     DelayedJobSite.sync_all_active_sites
+    redirect_to delayed_job_sites_path and return
   end
 
   private
