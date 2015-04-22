@@ -2,14 +2,12 @@
   <ul>
     <% @delayed_jobs.each do |delayed_job| %>
       <li>
-        <div class="sidebar-delayed-job">
+        <div class="sidebar-delayed-job" id="delayed_job_<%= delayed_job.id %>">
           <div class="environment"><%= delayed_job.delayed_job_site.environment %></div>
-          <div class="side-bar-error"><%= delayed_job.dj_last_error %></div>
+          <a href="<%= delayed_job_path(delayed_job) %>" data-remote="true"><div class="side-bar-error"><%= delayed_job.dj_last_error %></div></a>
         </div>
       </li>
     <% end %>
   </ul>
 </div>
-<div class="cd-delayed-job-info">
-  
-</div>
+<div class="cd-delayed-job-info"></div>

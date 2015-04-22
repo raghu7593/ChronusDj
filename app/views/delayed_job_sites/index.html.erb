@@ -5,7 +5,7 @@
   <% @delayed_job_sites.each do |delayed_job_site| %>
     <li>
       <div class="ribbon-wrapper">
-        <div class="ribbon-green"><%= delayed_job_site.active? ? "Active" : "Inactive" %></div>
+        <div class="ribbon ribbon-<%= delayed_job_site.active? ? 'green' : 'red' %>"><%= delayed_job_site.active? ? "Active" : "Inactive" %></div>
       </div>
       <div class="cd-item-info">
         <b><%= delayed_job_site.environment %></b>

@@ -48,13 +48,14 @@ class DelayedJobSite < ActiveRecord::Base
       keys.zip(values).each do |key, value|
         save_data(key, value, dj_object)
       end
+      set_function_name(dj_object)
       dj_object.save!
     end
     return if nokogiri_response.xpath(".//a[@class='more']").empty?
     next_url = nokogiri_response.xpath(".//a[@class='more']/@href").text
     next_uri = URI::join(self.url, next_url)
     nokogiri_response = get_response(next_uri, credentials)
-    collect_delayed_jobs_recursively(nokogiri_response)
+    collect_delayed_jobs_recursively(nokogiri_response, credentials)
   end
 
   def get_response(uri, credentials)
@@ -90,5 +91,10 @@ class DelayedJobSite < ActiveRecord::Base
     when "Created At"
       dj_object.dj_created_at = DateTime.parse(value.text)
     end
+  end
+
+  def set_function_name(dj_object)
+    return unless dj_object.dj_handler
+    dj_object.dj_function_name = dj_object.dj_handler.match(/method_name: :(.+?)\n/i).captures.first
   end
 end
